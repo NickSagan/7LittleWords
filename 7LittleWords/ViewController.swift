@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     var solutions = [String]()
     
     var score = 0
-    var level = 1
+    var level = 1 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     override func loadView() {
         view = UIView()
@@ -70,6 +74,8 @@ class ViewController: UIViewController {
         
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.layer.borderWidth = 2
+        buttonsView.layer.borderColor = UIColor.lightGray.cgColor
         view.addSubview(buttonsView)
         
         NSLayoutConstraint.activate([
@@ -121,10 +127,6 @@ class ViewController: UIViewController {
                 letterButtons.append(letterButton)
             }
         }
-        
-        cluesLabel.backgroundColor = .red
-        answersLabel.backgroundColor = .blue
-        buttonsView.backgroundColor = .green
     }
 
     override func viewDidLoad() {
@@ -133,15 +135,50 @@ class ViewController: UIViewController {
     }
     
     @objc func letterTapped(_ sender: UIButton){
-        
+        guard let buttonTitle = sender.titleLabel?.text else {return}
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
     
-    @objc func submitTapped(_ sender: UIButton){
+    @objc func submitTapped(_ sender: UIButton) {
+        guard let answerText = currentAnswer.text else {return}
+        if let solutionPosition = solutions.firstIndex(of: answerText) {
+            activatedButtons.removeAll()
+            
+            var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+            splitAnswers?[solutionPosition] = answerText
+            answersLabel.text = splitAnswers?.joined(separator: "\n")
+            
+            currentAnswer.text = ""
+            score += 1
+            
+            if score % 7 == 0 {
+                let ac = UIAlertController(title: "Well done!",message: "Are you ready for next level?", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
+                present(ac, animated: true)
+                
+            }
+        }
+    }
+    
+    func levelUp(action: UIAlertAction) {
+        level += 1
+        solutions.removeAll(keepingCapacity: true)
+        loadLevel()
         
+        for button in letterButtons {
+            button.isHidden = false
+        }
     }
     
     @objc func clearTapped(_ sender: UIButton){
-        
+        currentAnswer.text = ""
+        for btn in activatedButtons {
+            btn.isHidden = false
+        }
+
+        activatedButtons.removeAll()
     }
     
     func loadLevel() {
