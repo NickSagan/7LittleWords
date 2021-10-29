@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914FEF53272BF3DD00D356D2 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 914FEF51272BF3DC00D356D2 /* level2.txt */; };
+		914FEF54272BF3DD00D356D2 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 914FEF52272BF3DD00D356D2 /* level1.txt */; };
 		91E97475272BDDD6001AD476 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E97474272BDDD6001AD476 /* AppDelegate.swift */; };
 		91E97477272BDDD6001AD476 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E97476272BDDD6001AD476 /* SceneDelegate.swift */; };
 		91E97479272BDDD6001AD476 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E97478272BDDD6001AD476 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		914FEF51272BF3DC00D356D2 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		914FEF52272BF3DD00D356D2 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 		91E97471272BDDD6001AD476 /* 7LittleWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 7LittleWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E97474272BDDD6001AD476 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91E97476272BDDD6001AD476 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				91E9747D272BDDDC001AD476 /* Assets.xcassets */,
 				91E9747F272BDDDC001AD476 /* LaunchScreen.storyboard */,
 				91E97482272BDDDC001AD476 /* Info.plist */,
+				914FEF52272BF3DD00D356D2 /* level1.txt */,
+				914FEF51272BF3DC00D356D2 /* level2.txt */,
 			);
 			path = 7LittleWords;
 			sourceTree = "<group>";
@@ -125,8 +131,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914FEF54272BF3DD00D356D2 /* level1.txt in Resources */,
 				91E97481272BDDDC001AD476 /* LaunchScreen.storyboard in Resources */,
 				91E9747E272BDDDC001AD476 /* Assets.xcassets in Resources */,
+				914FEF53272BF3DD00D356D2 /* level2.txt in Resources */,
 				91E9747C272BDDD6001AD476 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

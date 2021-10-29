@@ -15,6 +15,12 @@ class ViewController: UIViewController {
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
+    
+    var score = 0
+    var level = 1
+    
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -86,16 +92,32 @@ class ViewController: UIViewController {
             submit.heightAnchor.constraint(equalToConstant: 44),
             
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
-            clear.centerXAnchor.constraint(equalTo: submit.centerXAnchor, constant: 100),
+            clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             clear.heightAnchor.constraint(equalTo: submit.heightAnchor),
             
             buttonsView.widthAnchor.constraint(equalToConstant: 750),
-            buttonsView.heightAnchor.constraint(equalToConstant: 250),
+            buttonsView.heightAnchor.constraint(equalToConstant: 320),
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 20),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         
         ])
+        
+        let width = 150
+        let height = 80
+        
+        for row in 0...3 {
+            for column in 0...4 {
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterButton.setTitle("WWW", for: .normal)
+                
+                let frame = CGRect(x: column * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                buttonsView.addSubview(letterButton)
+                letterButtons.append(letterButton)
+            }
+        }
         
         cluesLabel.backgroundColor = .red
         answersLabel.backgroundColor = .blue
